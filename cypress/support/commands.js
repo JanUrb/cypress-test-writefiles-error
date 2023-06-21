@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add("writeCustomeFile", () => { 
+    const filename = 'cypress/e2e/large.json'
+
+    cy.readFile(filename).then((obj) => {
+      cy.writeFile(filename+'-out', obj)
+    })
+
+})
